@@ -1,10 +1,10 @@
-FROM heroku/heroku:18
-ENV POSTGRESQL_VERSION=11.5
+FROM heroku/heroku:20
+ENV POSTGRESQL_VERSION=15.2
 
 RUN apt-get -q update
-RUN apt-get -q -y install curl gcc g++ make wget unzip build-essential libreadline-dev zlib1g-dev flex bison libkrb5-dev libssl-dev libxml2-dev libxslt1-dev uuid-dev
+RUN apt-get -q -y install curl gcc g++ make wget unzip build-essential libreadline-dev zlib1g-dev flex bison libkrb5-dev libssl-dev libxml2-dev libxslt1-dev uuid-dev protobuf-c-compiler libjsoncpp-dev libprotobuf-dev libprotobuf-c-dev
 
-RUN wget https://ci-database-binary.s3.amazonaws.com/heroku-18/postgresql-${POSTGRESQL_VERSION}.tgz
+RUN wget https://ci-database-binary.s3.amazonaws.com/heroku-20/postgresql-${POSTGRESQL_VERSION}.tgz
 RUN mkdir postgresql && tar -C postgresql -xzf postgresql-${POSTGRESQL_VERSION}.tgz
 
 ENV POSTGIS_VERSION=3.3.3
@@ -34,6 +34,7 @@ RUN cd ./postgis-${POSTGIS_VERSION} && ./configure \
     --without-raster \
     --with-geosconfig=/postgis-dependencies/bin/geos-config \
     --with-projdir=/postgis-dependencies \
+    --without-wagyu \
     && make
 
 COPY postgis-extensions-without-raster.Makefile ./postgis-${POSTGIS_VERSION}/extensions/postgis/Makefile
