@@ -7,11 +7,11 @@ RUN apt-get -q -y install curl gcc g++ make wget unzip build-essential libreadli
 RUN wget https://ci-database-binary.s3.amazonaws.com/heroku-18/postgresql-${POSTGRESQL_VERSION}.tgz
 RUN mkdir postgresql && tar -C postgresql -xzf postgresql-${POSTGRESQL_VERSION}.tgz
 
-ENV POSTGIS_VERSION=2.5.2
+ENV POSTGIS_VERSION=3.3.3
 ENV GEOS_VERSION=3.7.2
-ENV PROJ_VERSION=4.9.2
+ENV PROJ_VERSION=5.2.0
 
-RUN wget https://postgis.net/stuff/postgis-${POSTGIS_VERSION}.tar.gz
+RUN wget https://download.osgeo.org/postgis/source/postgis-${POSTGIS_VERSION}.tar.gz
 RUN wget https://download.osgeo.org/proj/proj-${PROJ_VERSION}.tar.gz
 RUN wget https://download.osgeo.org/geos/geos-${GEOS_VERSION}.tar.bz2
 
