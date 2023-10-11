@@ -17,8 +17,8 @@ BUILDPACK_DIR="$(dirname $(dirname $0))"
 
 # config
 POSTGIS_VERSION=3.3.3
-POSTGIS_DOWNLOAD_URL="https://postgis.s3.amazonaws.com/postgis-$POSTGIS_VERSION.tar.gz"
-POSTGIS_DEPENDENCIES_DOWNLOAD_URL="https://postgis.s3.amazonaws.com/postgis-dependencies-$POSTGIS_VERSION.tar.gz"
+POSTGIS_DOWNLOAD_URL="https://postgis.s3.amazonaws.com/postgis.tar.gz"
+POSTGIS_DEPENDENCIES_DOWNLOAD_URL="https://postgis.s3.amazonaws.com/postgis-dependencies.tar.gz"
 
 echo "-----> Downloading postgis"
 
